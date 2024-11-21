@@ -1,0 +1,7 @@
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\bin\Debug\CSharp.exe.config
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\bin\Debug\CSharp.exe
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\bin\Debug\CSharp.pdb
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\obj\Debug\CSharp.csproj.AssemblyReference.cache
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\obj\Debug\CSharp.csproj.CoreCompileInputs.cache
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\obj\Debug\CSharp.exe
+B:\Clone\machine-learning-projects-for-dot-net-developers\chapter-1\DigitsRecognizer\CSharp\obj\Debug\CSharp.pdb
