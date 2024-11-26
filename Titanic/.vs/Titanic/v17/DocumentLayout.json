@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "B:\\MachineLearningWithAsp.Net\\Titanic\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4AB9C2B0-3157-4C86-AC9B-19F3660DD8EC}|Titanic.fsproj|B:\\MachineLearningWithAsp.Net\\Titanic\\Stumps.fsx||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
+      "RelativeMoniker": "D:0:0:{4AB9C2B0-3157-4C86-AC9B-19F3660DD8EC}|Titanic.fsproj|solutionrelative:Stumps.fsx||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Stumps.fsx",
+              "DocumentMoniker": "B:\\MachineLearningWithAsp.Net\\Titanic\\Stumps.fsx",
+              "RelativeDocumentMoniker": "Stumps.fsx",
+              "ToolTip": "B:\\MachineLearningWithAsp.Net\\Titanic\\Stumps.fsx",
+              "RelativeToolTip": "Stumps.fsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001352|",
+              "WhenOpened": "2024-11-26T14:42:11.976Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
