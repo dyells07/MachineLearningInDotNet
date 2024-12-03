@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using OpenNLP.Tools.PosTagger;
 using OpenNLP.Tools.Tokenize;
@@ -11,7 +12,8 @@ namespace TextRank.POSTagger
     {
         private static readonly EnglishRuleBasedTokenizer Tokenizer = new EnglishRuleBasedTokenizer(false);
 
-        private static readonly string ModelPath = AppDomain.CurrentDomain.BaseDirectory + "/Resources/Models/";
+        // Updated ModelPath using Path.Combine
+        private static readonly string ModelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Models");
 
         private static readonly IList<string> RequiredTags = new List<string> { "NN", "JJ", "NNP", "NNS", "NNPS" };
 
@@ -27,11 +29,13 @@ namespace TextRank.POSTagger
             return taggedTokens;
         }
 
-
         public static IList<Tuple<string, string>> GetPosTaggedTokens(string sentence)
         {
-            var posTagger =
-                new EnglishMaximumEntropyPosTagger(ModelPath + "/EnglishPOS.nbin", ModelPath + @"/Parser/tagdict");
+            // Updated path construction
+            var posTagger = new EnglishMaximumEntropyPosTagger(
+                Path.Combine(ModelPath, "EnglishPOS.nbin"),
+                Path.Combine(ModelPath, "Parser", "tagdict"));
+
             var tokens = Tokenizer.Tokenize(sentence);
             var taggedList = posTagger.Tag(tokens);
             IList<Tuple<string, string>> tagged = new List<Tuple<string, string>>();
@@ -41,6 +45,5 @@ namespace TextRank.POSTagger
             }
             return GetFilteredTokens(tagged);
         }
-
     }
 }
