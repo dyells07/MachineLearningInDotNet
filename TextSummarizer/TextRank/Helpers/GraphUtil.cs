@@ -11,7 +11,6 @@ namespace TextRank.Helpers
 
         public static GraphUtil GraphInstance { get; } = new GraphUtil();
 
-        //ref: stackoverflow.com/questions/1952153/
         private static IEnumerable<IEnumerable<T>> GetKCombs<T>(IEnumerable<T> list, int length) where T : IComparable
         {
             if (length == 1) return list.Select(t => new[] { t });

@@ -37,7 +37,6 @@ namespace TextRank.Helpers
                     if (keywordsList.Contains(firstWord) && !dealtWith.Contains(firstWord))
                         modifiedPhrases.Add(firstWord);
 
-                    //Last Word condition
                     if (j == wordList.Count - 1 && keywordsList.Contains(secondWord) && !dealtWith.Contains(secondWord))
                         modifiedPhrases.Add(secondWord);
                 }

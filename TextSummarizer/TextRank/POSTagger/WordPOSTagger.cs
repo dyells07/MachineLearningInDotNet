@@ -7,12 +7,10 @@ using OpenNLP.Tools.Tokenize;
 
 namespace TextRank.POSTagger
 {
-    // ReSharper disable once InconsistentNaming
     internal static class WordPOSTagger
     {
         private static readonly EnglishRuleBasedTokenizer Tokenizer = new EnglishRuleBasedTokenizer(false);
 
-        // Updated ModelPath using Path.Combine
         private static readonly string ModelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Models");
 
         private static readonly IList<string> RequiredTags = new List<string> { "NN", "JJ", "NNP", "NNS", "NNPS" };
