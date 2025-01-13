@@ -3,20 +3,10 @@
 
 open FSharp.Data
 
-(*
-See the StackExchange API here:
-*)
-
-// http://api.stackexchange.com/docs/questions
-
 type Questions = JsonProvider<"""https://api.stackexchange.com/2.2/questions?site=stackoverflow""">
 
 let csQuestions = """https://api.stackexchange.com/2.2/questions?site=stackoverflow&tagged=C%23"""
 Questions.Load(csQuestions).Items |> Seq.iter (fun q -> printfn "%s" q.Title)
-
-(*
-Alternate take: using hard-coded sample
-*)
 
 [<Literal>]
 let sample = """{"items":[
