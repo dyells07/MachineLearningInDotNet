@@ -41,8 +41,6 @@ let evaluate validationSet classifier =
 
 let euclideanModel = train training euclideanDistance
 
-// Tuning the distance
-
 #time "on"
 
 let img1 = training.[0].Pixels
@@ -98,8 +96,6 @@ for i in 1 .. 1000000 do
     let dist = d4 (img1, img2)
     ignore ()
 
-// Array.Parallel
-
 let original = evaluate validation euclideanModel
 
 let updatedModel = train training d4
@@ -113,7 +109,6 @@ let parallelEvaluate validationSet classifier =
 
 let faster = parallelEvaluate validation updatedModel
 
-// limitations
 
 let test = Array.init 1000 (fun _ -> 10)
 
