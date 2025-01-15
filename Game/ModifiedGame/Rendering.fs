@@ -31,12 +31,10 @@ module Rendering =
     let render (before:GameState) (after:GameState) =
         let oldPos = before.Hero.Position
         let newPos = after.Hero.Position
-        // previous player position
         Console.SetCursorPosition (offset (oldPos))
         let tileType = after.Board.[oldPos.Left,oldPos.Top]
         Console.ForegroundColor <- colors.[tileType]
         Console.Write("█")
-        // current player position
         Console.SetCursorPosition (offset (newPos))
         Console.ForegroundColor <- creatureColor
         Console.Write("█")
