@@ -28,10 +28,6 @@ dataset.Rows
 display 0 tree
 
 
-(*
-Over-fitting issues
-*)
-
 let idExample = [
     "ID", fun (p:Passenger) -> p.PassengerId |> string |> Some ]
 
