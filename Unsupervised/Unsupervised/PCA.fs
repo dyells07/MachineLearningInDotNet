@@ -2,55 +2,51 @@
 
 module PCA =
 
-    open MathNet
     open MathNet.Numerics.LinearAlgebra
     open MathNet.Numerics.Statistics
-    
-    let covarianceMatrix (M:Matrix<float>) =
+
+    // Compute the covariance matrix
+    let covarianceMatrix (M: Matrix<float>) =
         let cols = M.ColumnCount
-        let C = DenseMatrix.create cols cols Matrix.Zero
+        let mutable C = DenseMatrix.create cols cols 0.0
         for c1 in 0 .. (cols - 1) do
-            C.[c1,c1] <- Statistics.Variance (M.Column c1)
+            C.[c1, c1] <- Statistics.Variance(M.Column(c1))
             for c2 in (c1 + 1) .. (cols - 1) do
-                let cov = Statistics.Covariance (M.Column c1, M.Column c2)
-                C.[c1,c2] <- cov
-                C.[c2,c1] <- cov
+                let cov = Statistics.Covariance(M.Column(c1), M.Column(c2))
+                C.[c1, c2] <- cov
+                C.[c2, c1] <- cov
         C
 
-    let normalize dim (observations:float[][]) = 
+    // Normalize the dataset
+    let normalize (dim: int) (observations: float[][]) =
+        let averages =
+            Array.init dim (fun i ->
+                observations |> Array.averageBy (fun x -> x.[i]))
 
-        let averages = 
-            Array.init dim (fun i -> 
-                observations
-                |> Seq.averageBy (fun x -> x.[i]))
-
-        let stdDevs = 
-            Array.init dim (fun i -> 
+        let stdDevs =
+            Array.init dim (fun i ->
                 let avg = averages.[i]
-                observations 
-                |> Seq.averageBy (fun x -> 
-                    pown (float x.[i] - avg) 2 |> sqrt))
+                observations
+                |> Array.averageBy (fun x -> 
+                    pown (x.[i] - avg) 2 |> sqrt))
 
-        observations 
+        observations
         |> Array.map (fun row ->
-            row 
-            |> Array.mapi (fun i x -> 
-                (float x - averages.[i]) / stdDevs.[i]))
+            row
+            |> Array.mapi (fun i x ->
+                (x - averages.[i]) / stdDevs.[i]))
 
-    let pca (observations:float[][]) =
-        
-        let factorization =
-            observations
-            |> Matrix.Build.DenseOfRowArrays
-            |> covarianceMatrix
-            |> Matrix.eigen
-        
-        let eigenValues = factorization.EigenValues
+    // Perform PCA
+    let pca (observations: float[][]) =
+        let dataMatrix = Matrix.Build.DenseOfRowArrays(observations)
+        let covMatrix = covarianceMatrix dataMatrix
+        let factorization = covMatrix.Evd() // Eigenvalue decomposition
+        let eigenValues = factorization.EigenValues.Real()
         let eigenVectors = factorization.EigenVectors
 
-        let projector (obs:float[]) =
-            let obsVector = obs |> Vector.Build.DenseOfArray
-            (eigenVectors.Transpose () * obsVector)
+        let projector (obs: float[]) =
+            let obsVector = Vector.Build.DenseOfArray(obs)
+            (eigenVectors.TransposeThisAndMultiply(obsVector))
             |> Vector.toArray
 
-        (eigenValues,eigenVectors), projector
+        (eigenValues, eigenVectors), projector
